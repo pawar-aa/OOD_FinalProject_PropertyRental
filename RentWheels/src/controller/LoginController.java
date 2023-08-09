@@ -34,6 +34,9 @@ public class LoginController implements Initializable {
 
         String enteredUsername = username.getText();
         String enteredPassword = password.getText();
+        
+        System.out.println(enteredUsername);
+        System.out.println(enteredPassword);
 
         boolean isValid = checkCredentials(enteredUsername, enteredPassword);
 

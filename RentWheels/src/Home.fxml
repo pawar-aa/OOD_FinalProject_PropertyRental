@@ -16,7 +16,7 @@
 <?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
 
-<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LoginController">
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LoginController1">
     <children>
         <!-- Background Gradient -->
         <AnchorPane style="-fx-background-color: linear-gradient(to bottom, #0E6EB8, #1AC4C0);">
@@ -50,21 +50,21 @@
                     </Label>
                     
                     <!-- Username Field -->
-                    <TextField fx:id="username" layoutX="60.0" layoutY="150.0" onAction="#loginAdmin" prefHeight="40.0" prefWidth="267.0" promptText="Type your Username here" styleClass="textfield">
+                    <TextField fx:id="username" layoutX="60.0" layoutY="150.0" onAction="#loginAdmin1" prefHeight="40.0" prefWidth="267.0" promptText="Type your Username here" styleClass="textfield">
                         <font>
                             <Font size="16.0" />
                         </font>
                     </TextField>
                     
                     <!-- Password Field -->
-                    <PasswordField fx:id="password" layoutX="60.0" layoutY="205.0" onAction="#loginAdmin" prefHeight="40.0" prefWidth="267.0" promptText="Type your Password here" styleClass="textfield">
+                    <PasswordField fx:id="password" layoutX="60.0" layoutY="205.0" onAction="#loginAdmin1" prefHeight="40.0" prefWidth="267.0" promptText="Type your Password here" styleClass="textfield">
                         <font>
                             <Font size="16.0" />
                         </font>
                     </PasswordField>
                     
                     <!-- Sign In Button -->
-                    <Button fx:id="loginBtn" layoutX="112.0" layoutY="274.0" mnemonicParsing="false" onAction="#loginAdmin" prefHeight="40.0" prefWidth="147.0" styleClass="login-btn" text="Log In" textFill="#1A1A1A" />
+                    <Button fx:id="loginBtn" layoutX="112.0" layoutY="274.0" mnemonicParsing="false" onAction="#loginAdmin1" prefHeight="40.0" prefWidth="147.0" styleClass="login-btn" text="Log In" textFill="#1A1A1A" />
                     
                     <!-- Close Button -->
                     <Button fx:id="closeBtn" layoutX="383.0" layoutY="8.0" mnemonicParsing="false" onAction="#close" prefHeight="30.0" prefWidth="30.0" styleClass="close">

@@ -126,7 +126,7 @@
                                                 <Font name="Tahoma" size="15.0" />
                                              </font>
                                           </Label>
-                                          <Label fx:id="home_availableCars" alignment="CENTER_RIGHT" layoutX="76.0" layoutY="14.0" prefHeight="21.0" prefWidth="155.0" text="0" textFill="WHITE">
+                                          <Label fx:id="home_availableProperty" alignment="CENTER_RIGHT" layoutX="76.0" layoutY="14.0" prefHeight="21.0" prefWidth="155.0" text="0" textFill="WHITE">
                                              <font>
                                                 <Font name="Arial Bold" size="18.0" />
                                              </font>
@@ -207,7 +207,7 @@
                               </AnchorPane>
                            </children>
                         </AnchorPane>
-                        <AnchorPane fx:id="availableCars_form" layoutX="117.0" layoutY="120.0" prefHeight="555.0" prefWidth="896.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <AnchorPane fx:id="availablePropertys_form" layoutX="117.0" layoutY="120.0" prefHeight="555.0" prefWidth="896.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <children>
                               <AnchorPane layoutX="14.0" layoutY="14.0" prefHeight="196.0" prefWidth="870.0" stylesheets="@dashboardDesign.css">
                                  <styleClass>
@@ -238,24 +238,24 @@
                                           <Font name="Tahoma" size="14.0" />
                                        </font>
                                     </Label>
-                                    <ComboBox fx:id="availableProperty_Status" layoutX="77.0" layoutY="141.0" onAction="#availableCarStatusList" prefHeight="25.0" prefWidth="179.0" promptText="Choose..." styleClass="textfield" stylesheets="@dashboardDesign.css" />
+                                    <ComboBox fx:id="availableProperty_Status" layoutX="77.0" layoutY="141.0" onAction="#availablePropertyStatusList" prefHeight="25.0" prefWidth="179.0" promptText="Choose..." styleClass="textfield" stylesheets="@dashboardDesign.css" />
                                     <AnchorPane layoutX="465.0" layoutY="16.0" prefHeight="153.0" prefWidth="116.0" stylesheets="@dashboardDesign.css">
                                        <styleClass>
                                           <String fx:value="white-bg" />
                                           <String fx:value="shadow" />
                                        </styleClass>
                                        <children>
-                                          <ImageView fx:id="availableCars_imageView" fitHeight="153.0" fitWidth="194.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true" />
-                                          <Button fx:id="availableCars_importBtn" layoutY="122.0" mnemonicParsing="false" onAction="#availableCarImportImage" prefHeight="31.0" prefWidth="195.0" styleClass="add-btn" stylesheets="@dashboardDesign.css" text="Import Image" />
+                                          <ImageView fx:id="availablePropertys_imageView" fitHeight="153.0" fitWidth="194.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true" />
+                                          <Button fx:id="availablePropertys_importBtn" layoutY="122.0" mnemonicParsing="false" onAction="#availablePropertyImportImage" prefHeight="31.0" prefWidth="195.0" styleClass="add-btn" stylesheets="@dashboardDesign.css" text="Import Image" />
                                        </children>
                                     </AnchorPane>
-                                    <Button fx:id="availableCars_insertBtn" layoutX="740.0" layoutY="12.0" mnemonicParsing="false" onAction="#availableCarAdd" prefHeight="36.0" prefWidth="98.0" styleClass="add-btn" stylesheets="@dashboardDesign.css" text="Create Data">
+                                    <Button fx:id="availablePropertys_insertBtn" layoutX="740.0" layoutY="12.0" mnemonicParsing="false" onAction="#availablePropertyAdd" prefHeight="36.0" prefWidth="98.0" styleClass="add-btn" stylesheets="@dashboardDesign.css" text="Create Data">
                                        <font>
                                           <Font name="Tahoma Bold" size="13.0" />
                                        </font></Button>
-                                    <Button fx:id="availableCars_updateBtn" layoutX="740.0" layoutY="52.0" mnemonicParsing="false" onAction="#availableCarUpdate" prefHeight="36.0" prefWidth="98.0" styleClass="update-btn" stylesheets="@dashboardDesign.css" text="Update Data" />
-                                    <Button fx:id="availableCars_deleteBtn" layoutX="740.0" layoutY="144.0" mnemonicParsing="false" onAction="#availableCarDelete" prefHeight="36.0" prefWidth="98.0" styleClass="delete-btn" stylesheets="@dashboardDesign.css" text="Delete Data" />
-                                    <Button fx:id="availableCars_clearBtn" layoutX="740.0" layoutY="99.0" mnemonicParsing="false" onAction="#availableCarClear" prefHeight="36.0" prefWidth="98.0" styleClass="clear-btn" stylesheets="@dashboardDesign.css" text="Clear All" />
+                                    <Button fx:id="availablePropertys_updateBtn" layoutX="740.0" layoutY="52.0" mnemonicParsing="false" onAction="#availablePropertyUpdate" prefHeight="36.0" prefWidth="98.0" styleClass="update-btn" stylesheets="@dashboardDesign.css" text="Update Data" />
+                                    <Button fx:id="availablePropertys_deleteBtn" layoutX="740.0" layoutY="144.0" mnemonicParsing="false" onAction="#availablePropertyDelete" prefHeight="36.0" prefWidth="98.0" styleClass="delete-btn" stylesheets="@dashboardDesign.css" text="Delete Data" />
+                                    <Button fx:id="availablePropertys_clearBtn" layoutX="740.0" layoutY="99.0" mnemonicParsing="false" onAction="#availablePropertyClear" prefHeight="36.0" prefWidth="98.0" styleClass="clear-btn" stylesheets="@dashboardDesign.css" text="Clear All" />
                                     <Label layoutX="282.0" layoutY="30.0" text="City">
                                        <font>
                                           <Font name="Tahoma" size="14.0" />
@@ -287,7 +287,7 @@
                                     <String fx:value="shadow" />
                                  </styleClass>
                                  <children>
-                                    <TableView fx:id="availableCars_tableView" layoutX="22.0" layoutY="56.0" onMouseClicked="#availableCarSelect" prefHeight="239.0" prefWidth="838.0">
+                                    <TableView fx:id="availablePropertys_tableView" layoutX="22.0" layoutY="56.0" onMouseClicked="#availablePropertySelect" prefHeight="239.0" prefWidth="838.0">
                                       <columns>
                                         <TableColumn fx:id="availableProperty_col_propertyId" prefWidth="118.0" text="ID" />
                                         <TableColumn fx:id="availableProperty_col_street" prefWidth="224.0" text="Street" />
@@ -298,7 +298,7 @@
                                           <TableColumn fx:id="availableProperty_col_status" prefWidth="118.0" text="Status" />
                                       </columns>
                                     </TableView>
-                                    <TextField fx:id="availableCars_search" layoutX="16.0" layoutY="14.0" onKeyTyped="#availableCarSearch" prefHeight="30.0" prefWidth="263.0" promptText="Search" styleClass="search" stylesheets="@dashboardDesign.css" />
+                                    <TextField fx:id="availablePropertys_search" layoutX="16.0" layoutY="14.0" onKeyTyped="#availablePropertySearch" prefHeight="30.0" prefWidth="263.0" promptText="Search" styleClass="search" stylesheets="@dashboardDesign.css" />
                                     <FontAwesomeIcon fill="#7c7c7c" glyphName="SEARCH" layoutX="22.0" layoutY="35.0" size="1.5em" />
                                  </children>
                               </AnchorPane>
@@ -312,24 +312,24 @@
                                     <String fx:value="shadow" />
                                  </styleClass>
                                  <children>
-                                    <Label layoutX="24.0" layoutY="26.0" text="Car ID:">
+                                    <Label layoutX="24.0" layoutY="26.0" text="City:">
                                        <font>
                                           <Font name="Tahoma" size="14.0" />
                                        </font>
                                     </Label>
-                                    <ComboBox fx:id="rent_carId" layoutX="81.0" layoutY="23.0" onAction="#rentCarCarId" prefWidth="150.0" promptText="Choose..." styleClass="textfield" stylesheets="@dashboardDesign.css" />
-                                    <Label layoutX="26.0" layoutY="65.0" text="Brand:">
+                                    <ComboBox fx:id="rent_City" layoutX="81.0" layoutY="23.0" onAction="#rentPropertyCity" prefWidth="150.0" promptText="Choose..." styleClass="textfield" stylesheets="@dashboardDesign.css" />
+                                    <Label layoutX="26.0" layoutY="65.0" text="Street">
                                        <font>
                                           <Font name="Tahoma" size="14.0" />
                                        </font>
                                     </Label>
-                                    <ComboBox fx:id="rent_brand" layoutX="81.0" layoutY="61.0" onAction="#rentCarBrand" prefWidth="150.0" promptText="Choose..." styleClass="textfield" stylesheets="@dashboardDesign.css" />
-                                    <Label layoutX="26.0" layoutY="108.0" text="Model:">
+                                    <ComboBox fx:id="rent_Street" layoutX="81.0" layoutY="61.0" onAction="#rentPropertyStreet" prefWidth="150.0" promptText="Choose..." styleClass="textfield" stylesheets="@dashboardDesign.css" />
+                                    <Label layoutX="26.0" layoutY="108.0" text="Unit">
                                        <font>
                                           <Font name="Tahoma" size="14.0" />
                                        </font>
                                     </Label>
-                                    <ComboBox fx:id="rent_model" layoutX="81.0" layoutY="104.0" onAction="#rentCarModel" prefWidth="150.0" promptText="Choose..." styleClass="textfield" stylesheets="@dashboardDesign.css" />
+                                    <ComboBox fx:id="rent_Unit" layoutX="81.0" layoutY="104.0" onAction="#rentPropertyUnit" prefWidth="150.0" promptText="Choose..." styleClass="textfield" stylesheets="@dashboardDesign.css" />
                                     <Label layoutX="300.0" layoutY="27.0" text="First Name:">
                                        <font>
                                           <Font name="Tahoma" size="14.0" />
@@ -347,7 +347,7 @@
                                           <Font name="Tahoma" size="14.0" />
                                        </font>
                                     </Label>
-                                    <ComboBox fx:id="rent_gender" layoutX="386.0" layoutY="103.0" onAction="#rentCarGender" prefHeight="25.0" prefWidth="161.0" promptText="Choose..." styleClass="textfield" stylesheets="@dashboardDesign.css" />
+                                    <ComboBox fx:id="rent_gender" layoutX="386.0" layoutY="103.0" onAction="#rentPropertyGender" prefHeight="25.0" prefWidth="161.0" promptText="Choose..." styleClass="textfield" stylesheets="@dashboardDesign.css" />
                                     <Label layoutX="14.0" layoutY="168.0" text="Date Rented:">
                                        <font>
                                           <Font name="Tahoma" size="14.0" />
@@ -397,14 +397,14 @@
                                  <children>
                                     <TableView fx:id="rent_tableView" layoutX="14.0" layoutY="63.0" prefHeight="217.0" prefWidth="841.0">
                                       <columns>
-                                        <TableColumn fx:id="rent_col_carId" prefWidth="136.0" text="Car ID" />
+                                        <TableColumn fx:id="rent_col_propertyId" prefWidth="136.0" text="Property ID" />
                                         <TableColumn fx:id="rent_col_brand" prefWidth="226.0" text="Brand" />
                                           <TableColumn fx:id="rent_col_model" prefWidth="193.0" text="Model" />
                                           <TableColumn fx:id="rent_col_price" prefWidth="145.0" text="Price ($)" />
                                           <TableColumn fx:id="rent_col_status" prefWidth="139.0" text="Status" />
                                       </columns>
                                     </TableView>
-                                    <Label layoutX="14.0" layoutY="14.0" text="Available Cars">
+                                    <Label layoutX="14.0" layoutY="14.0" text="Available Propertys">
                                        <font>
                                           <Font name="Arial Bold" size="30.0" />
                                        </font>

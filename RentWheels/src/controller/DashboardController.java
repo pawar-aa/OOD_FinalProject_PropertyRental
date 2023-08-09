@@ -163,6 +163,15 @@ public class DashboardController implements Initializable {
 
     @FXML
     private ComboBox<?> rent_propertyId;
+    
+    @FXML
+    private ComboBox<?> rent_City;
+    
+    @FXML
+    private ComboBox<?> rent_Street;
+    
+    @FXML
+    private ComboBox<?> rent_Unit;
 
 
     @FXML
@@ -228,9 +237,8 @@ public class DashboardController implements Initializable {
             while(result.next()){
                 countAC = result.getInt("COUNT(id)");
             }
-            
-            home_availableProperty.setText(String.valueOf(countAC));
-            
+            System.out.println(String.valueOf(countAC));
+            home_availableProperty.setText(String.valueOf(countAC));            
         }catch(Exception e){e.printStackTrace();}
         
     }
@@ -278,7 +286,7 @@ public class DashboardController implements Initializable {
         
         home_incomeChart.getData().clear();
         
-        String sql = "SELECT date_rented, SUM(total) FROM customer GROUP BY date_rented ORDER BY TIMESTAMP(date_rented) ASC LIMIT 6";
+        String sql = "SELECT start_date, SUM(total) FROM customer GROUP BY start_date ORDER BY TIMESTAMP(start_date) ASC LIMIT 6";
         
         connect = DatabaseConnection.connectDb();
         
@@ -301,7 +309,7 @@ public class DashboardController implements Initializable {
     public void homeCustomerChart(){
         home_customerChart.getData().clear();
         
-        String sql = "SELECT date_rented, COUNT(id) FROM customer GROUP BY date_rented ORDER BY TIMESTAMP(date_rented) ASC LIMIT 4";
+        String sql = "SELECT start_date, COUNT(id) FROM customer GROUP BY start_date ORDER BY TIMESTAMP(start_date) ASC LIMIT 4";
         
         connect = DatabaseConnection.connectDb();
         
@@ -323,8 +331,8 @@ public class DashboardController implements Initializable {
     
     public void availablePropertyAdd() {
 
-        String sql = "INSERT INTO property (property_id, price, status, image, date) "
-                + "VALUES(?,?,?,?,?,?,?)";
+        String sql = "INSERT INTO property (property_id, street, unit, status, city, state, upfront_amount, image, date) "
+                + "VALUES(?,?,?,?,?,?,?,?,?)";
 
         connect = DatabaseConnection.connectDb();
 
@@ -332,6 +340,9 @@ public class DashboardController implements Initializable {
             Alert alert;
 
             if (availableProperty_Id.getText().isEmpty()
+                    || availableProperty_Street.getText().isEmpty()
+                    || availableProperty_Unit.getText().isEmpty()
+                    || availableProperty_City.getText().isEmpty()
                     || availableProperty_State.getText().isEmpty()
                     || availableProperty_Status.getSelectionModel().getSelectedItem() == null
                     || availableProperty_UpfrontAmount.getText().isEmpty()
@@ -344,19 +355,22 @@ public class DashboardController implements Initializable {
             } else {
                 prepare = connect.prepareStatement(sql);
                 prepare.setString(1, availableProperty_Id.getText());
-                prepare.setString(2, availableProperty_State.getText());
-                prepare.setString(4, availableProperty_UpfrontAmount.getText());
-                prepare.setString(5, (String) availableProperty_Status.getSelectionModel().getSelectedItem());
+                prepare.setString(2, availableProperty_Street.getText());
+                prepare.setString(3, availableProperty_Unit.getText());
+                prepare.setString(4, (String) availableProperty_Status.getSelectionModel().getSelectedItem());
+                prepare.setString(5, availableProperty_City.getText());
+                prepare.setString(6, availableProperty_State.getText());
+                prepare.setString(7, availableProperty_UpfrontAmount.getText());
 
                 String uri = FetchData.path;
                 uri = uri.replace("\\", "\\\\");
 
-                prepare.setString(6, uri);
+                prepare.setString(8, uri);
 
                 Date date = new Date();
                 java.sql.Date sqlDate = new java.sql.Date(date.getTime());
 
-                prepare.setString(7, String.valueOf(sqlDate));
+                prepare.setString(9, String.valueOf(sqlDate));
 
                 prepare.executeUpdate();
 
@@ -381,9 +395,13 @@ public class DashboardController implements Initializable {
         uri = uri.replace("\\", "\\\\");
 
         String sql = "UPDATE property SET status ='"
-                + availableProperty_Status.getSelectionModel().getSelectedItem() + "', price = '"
+                + availableProperty_Status.getSelectionModel().getSelectedItem() + "', upfront_amount = '"
                 + availableProperty_UpfrontAmount.getText() + "', image = '" + uri
-                + "' WHERE property_id = '" + availableProperty_Id.getText() + "'";
+                + "' WHERE property_id = '" + availableProperty_Id.getText() + "',street ='"
+                +availableProperty_Street.getText()+"', unit ='"
+                +availableProperty_Unit.getText()+"'city = '"
+                +availableProperty_City.getText() + "'state = '"
+                +availableProperty_State.getText()+"'";
 
         connect = DatabaseConnection.connectDb();
 
@@ -391,6 +409,9 @@ public class DashboardController implements Initializable {
             Alert alert;
 
             if (availableProperty_Id.getText().isEmpty()
+                    || availableProperty_Street.getText().isEmpty()
+                    || availableProperty_Unit.getText().isEmpty()
+                    || availableProperty_City.getText().isEmpty()
                     || availableProperty_State.getText().isEmpty()
                     || availableProperty_Status.getSelectionModel().getSelectedItem() == null
                     || availableProperty_UpfrontAmount.getText().isEmpty()
@@ -437,10 +458,13 @@ public class DashboardController implements Initializable {
         try {
             Alert alert;
             if (availableProperty_Id.getText().isEmpty()
+                    || availableProperty_Street.getText().isEmpty()
+                    || availableProperty_Unit.getText().isEmpty()
+                    || availableProperty_City.getText().isEmpty()
                     || availableProperty_State.getText().isEmpty()
                     || availableProperty_Status.getSelectionModel().getSelectedItem() == null
                     || availableProperty_UpfrontAmount.getText().isEmpty()
-                    || FetchData.path == null || FetchData.path == "") {
+                    || FetchData.path == null || FetchData.path == ""){
                 alert = new Alert(AlertType.ERROR);
                 alert.setTitle("Error Message");
                 alert.setHeaderText(null);
@@ -479,6 +503,9 @@ public class DashboardController implements Initializable {
         availableProperty_State.setText("");
         availableProperty_Status.getSelectionModel().clearSelection();
         availableProperty_UpfrontAmount.setText("");
+        availableProperty_City.setText("");
+        availableProperty_Street.setText("");
+        availableProperty_Unit.setText("");
 
         FetchData.path = "";
 
@@ -537,7 +564,7 @@ public class DashboardController implements Initializable {
             	propertyD = new propertyData(result.getInt("property_id"),
             			result.getString("street"),
             			result.getString("unit"),
-            			result.getDouble("up_front_Amount"),
+            			result.getDouble("upfront_amount"),
             			result.getString("status"),
             			result.getString("city"),
             			result.getString("state"),
@@ -1027,6 +1054,81 @@ public class DashboardController implements Initializable {
         rentPropertyShowListData();
         rentPropertyPropertyId();
         rentPropertyGender();
+
+    }
+    public void rentPropertyCity() {
+    	String sql = "SELECT * FROM property WHERE status = 'Available'";
+
+        connect = DatabaseConnection.connectDb();
+
+        try {
+            prepare = connect.prepareStatement(sql);
+            result = prepare.executeQuery();
+
+            ObservableList listData = FXCollections.observableArrayList();
+
+            while (result.next()) {
+                listData.add(result.getString("city"));
+            }
+
+            rent_City.setItems(listData);
+
+            rentPropertyStreet();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    
+    public void rentPropertyStreet() {
+
+        String sql = "SELECT * FROM property WHERE city = '"
+                + rent_City.getSelectionModel().getSelectedItem() + "'";
+
+        connect = DatabaseConnection.connectDb();
+
+        try {
+            prepare = connect.prepareStatement(sql);
+            result = prepare.executeQuery();
+
+            ObservableList listData = FXCollections.observableArrayList();
+
+            while (result.next()) {
+                listData.add(result.getString("brand"));
+            }
+
+            rent_Street.setItems(listData);
+
+            rentPropertyUnit();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
+    
+    public void rentPropertyUnit() {
+
+        String sql = "SELECT * FROM property WHERE street = '"
+                + rent_Street.getSelectionModel().getSelectedItem() + "'";
+
+        connect = DatabaseConnection.connectDb();
+
+        try {
+            prepare = connect.prepareStatement(sql);
+            result = prepare.executeQuery();
+
+            ObservableList listData = FXCollections.observableArrayList();
+
+            while (result.next()) {
+                listData.add(result.getString("model"));
+            }
+
+            rent_Unit.setItems(listData);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
     }
 
