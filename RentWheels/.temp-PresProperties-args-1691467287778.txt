@@ -1,9 +1,0 @@
---add-modules
-javafx.controls,javafx.fxml,javafx.web
--Dfile.encoding=UTF-8
--p
-/Users/sparshramchandani/.p2/pool/plugins/org.eclipse.fx.ide.css.jfx8_3.8.0.202204150904.jar:/Users/sparshramchandani/Downloads/javafx-sdk-20.0.1/lib/javafx-swt.jar:/Users/sparshramchandani/Downloads/javafx-sdk-20.0.1/lib/javafx.base.jar:/Users/sparshramchandani/Downloads/javafx-sdk-20.0.1/lib/javafx.controls.jar:/Users/sparshramchandani/Downloads/javafx-sdk-20.0.1/lib/javafx.fxml.jar:/Users/sparshramchandani/Downloads/javafx-sdk-20.0.1/lib/javafx.graphics.jar:/Users/sparshramchandani/Downloads/javafx-sdk-20.0.1/lib/javafx.media.jar:/Users/sparshramchandani/Downloads/javafx-sdk-20.0.1/lib/javafx.swing.jar:/Users/sparshramchandani/Downloads/javafx-sdk-20.0.1/lib/javafx.web.jar
--classpath
-"/Users/sparshramchandani/Documents/Sem_3/OOD/Final Project Altaf/RentWheels/bin:/Users/sparshramchandani/Documents/Sem_3/OOD/Final Project Altaf/RentWheels/jars/fontawesomefx-8.2.jar:/Users/sparshramchandani/Documents/Sem_3/OOD/Final Project Altaf/RentWheels/jars/jfreechart-1.0.19.jar:/Users/sparshramchandani/Documents/Sem_3/OOD/Final Project Altaf/RentWheels/jars/ojdbc14-10.2.0.2.0.jar:/Users/sparshramchandani/Documents/Sem_3/OOD/Final Project Altaf/RentWheels/jars/mysql-connector-j-8.0.32.jar"
--XX:+ShowCodeDetailsInExceptionMessages
-application.Main
